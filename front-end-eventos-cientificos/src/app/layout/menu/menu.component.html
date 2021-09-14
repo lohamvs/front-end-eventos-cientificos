@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+        <div>
+            <span>Eventos Científicos</span>
+        </div>
+    </div>
+</mat-toolbar>
+
+<mat-sidenav-container fxLayout="row" class="nav-container" autosize>
+    <mat-sidenav #sidenav mode="side" opened="true" fxFlex="15" fxFlexAlign="start" color="primary">
+        <mat-nav-list class="nav-list-items" fxLayout="column">
+            <mat-list-item>
+                <label><a [routerLink]="[ '/volumes' ]">Volumes</a></label>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <label><a [routerLink]="[ '/artigos' ]">Artigos</a></label>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <label><a [routerLink]="[ '/autores' ]">Autores</a></label>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlex fxFlexFill>
+        <div class="main-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
