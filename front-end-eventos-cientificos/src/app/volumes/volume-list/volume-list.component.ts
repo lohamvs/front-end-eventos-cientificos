@@ -11,20 +11,38 @@ import { VolumeService } from '../shared/volume.service';
 })
 export class VolumeListComponent implements OnInit {
 
-  displayedColumns = ['Id','Edicao','Sigla','Cidade','DataInicio', 'Edit', 'Remove'];
+  volumes: Volume[] = [];
+
+  displayedColumns = ['Volume', 'Edicao', 'Sigla', 'Cidade', 'DataInicio', 'Delete'];
   dataSource: MatTableDataSource<Volume>;
 
   constructor(private volumeService: VolumeService,
-              private router: Router) { }
+    private router: Router) { }
+
+  get hasData() {
+    return this.dataSource != null;
+  }
 
   ngOnInit(): void {
     this.loadVolumes();
   }
 
+  deletarVolume(volume: Volume) {
+    
+    this.volumeService.deleteVolume(volume).subscribe(response => {
+      this.loadVolumes();
+    });
+  }
+
+  verVolume(volumeId: number) {
+    this.router.navigate([ volumeId ]);
+  }
+
   private loadVolumes() {
     return this.volumeService.getVolumes()
-    .subscribe(response => {
-      this.dataSource = new MatTableDataSource<Volume>(response);
-    });
+      .subscribe(response => {
+        this.volumes = response;
+        this.dataSource = new MatTableDataSource<Volume>(this.volumes);
+      });
   }
 }

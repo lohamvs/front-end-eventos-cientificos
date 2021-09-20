@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuModule } from './layout/menu/menu.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MenuModule } from './layout/menu/menu.module';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    MenuModule
+    MenuModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

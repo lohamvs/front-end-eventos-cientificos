@@ -7,7 +7,7 @@ import { Volume } from './volume';
   providedIn: 'root'
 })
 export class VolumeService {
-
+  
   private resource = environment.apiBaseUri.concat('/volumes');
 
   constructor(private rest: CommonRestService) { }
@@ -15,5 +15,25 @@ export class VolumeService {
   getVolumes() {
     const url = this.resource;
     return this.rest.get<Array<Volume>>(url);
+  }
+
+  getVolume(volumeId: number) {
+    const url = this.resource.concat(`/${volumeId}`);
+    return this.rest.get<Volume>(url);
+  }
+
+  createVolume(volume: Volume) {
+    const url = this.resource;
+    return this.rest.post<Volume>(url, volume);
+  }
+
+  putVolume(volume: Volume) {
+    const url = this.resource;
+    return this.rest.put<Volume>(url, volume);
+  }
+
+  deleteVolume(volume: Volume) {
+    const url = this.resource;
+    return this.rest.delete<Volume>(url, volume);
   }
 }

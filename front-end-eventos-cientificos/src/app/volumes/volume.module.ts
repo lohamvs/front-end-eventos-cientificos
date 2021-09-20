@@ -5,22 +5,35 @@ import { VolumeListComponent } from './volume-list/volume-list.component';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { VolumeRoutingModule } from './volume-routing.module';
+import { VolumeEditComponent } from './volume-edit/volume-edit.component';
+import { FormsModule } from '@angular/forms';
+import { VolumeCreateComponent } from './volume-create/volume-create.component';
+import { VolumeComponent } from './volume/volume.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
-    VolumeListComponent
+    VolumeListComponent,
+    VolumeComponent,
+    VolumeEditComponent,
+    VolumeCreateComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    VolumeRoutingModule
+    VolumeRoutingModule,
+    FormsModule
   ],
   exports: [
-    VolumeListComponent
+    VolumeListComponent,
+    VolumeComponent,
+    VolumeEditComponent,
+    VolumeCreateComponent
   ],
   providers: [
-    VolumeService
+    VolumeService,
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'} }
   ]
 })
 export class VolumeModule { }

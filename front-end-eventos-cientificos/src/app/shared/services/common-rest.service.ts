@@ -35,8 +35,8 @@ export class CommonRestService {
       );
   }
   
-  delete<T>(url: string): Observable<T> {
-    return this.http.delete<T>(url)
+  delete<T>(url: string, body: any): Observable<T> {
+    return this.http.delete<T>(url, {body: body})
       .pipe(
         map(response => response),
         catchError(response => throwError(response))

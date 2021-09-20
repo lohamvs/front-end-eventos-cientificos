@@ -6,20 +6,21 @@
     </div>
 </mat-toolbar>
 
-<mat-sidenav-container fxLayout="row" class="nav-container" autosize>
-    <mat-sidenav #sidenav mode="side" opened="true" fxFlex="15" fxFlexAlign="start" color="primary">
+<mat-sidenav-container fxLayout="row" class="nav-container" autosize color="primary">
+    <mat-sidenav #sidenav mode="side" opened="true" fxFlex="15" fxFlexAlign="start">
         <mat-nav-list class="nav-list-items" fxLayout="column">
             <mat-list-item>
-                <label><a [routerLink]="[ '/volumes' ]">Volumes</a></label>
+                <label [routerLink]="[ '/volumes' ]"><b>Volumes</b></label>
             </mat-list-item>
-            
+            <mat-divider></mat-divider>
             <mat-list-item>
-                <label><a [routerLink]="[ '/artigos' ]">Artigos</a></label>
+                <label [routerLink]="[ '/artigos' ]"><b>Artigos</b></label>
             </mat-list-item>
-            
+            <mat-divider></mat-divider>
             <mat-list-item>
-                <label><a [routerLink]="[ '/autores' ]">Autores</a></label>
+                <label [routerLink]="[ '/autores' ]"> <b>Autores</b> </label>
             </mat-list-item>
+            <mat-divider></mat-divider>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlex fxFlexFill>

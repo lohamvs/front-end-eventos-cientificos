@@ -1,0 +1,39 @@
+<div fxLayout="column" *ngIf="volume">
+    <div class="title" fxLayout="row">
+        <div fxFlex="80" fxLayoutAlign="start center">
+            <span color="primary">Criar Volume</span>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="column" *ngIf="volume">
+    <form #volumeEditForm="ngForm" (ngSubmit)="onSubmit(volumeEditForm)" novalidate>
+        <mat-card>
+            <mat-card-content fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                <div fxLayoutGap="20px" fxLayout="column" fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Sigla</mat-label>
+                        <input matInput [(ngModel)]="volume.sigla" name="sigla" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Edição</mat-label>
+                        <input matInput [(ngModel)]="volume.edicao" name="edicao" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Cidade</mat-label>
+                        <input matInput [(ngModel)]="volume.cidade" name="cidade" required>
+                    </mat-form-field>
+                </div>
+                <div fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Descrição</mat-label>
+                        <textarea matInput [(ngModel)]="volume.descricao" name="descricao" required></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary">Salvar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
