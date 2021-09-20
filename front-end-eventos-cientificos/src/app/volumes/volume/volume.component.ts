@@ -19,7 +19,7 @@ export class VolumeComponent implements OnInit {
   artigos: Artigo[] = [];
 
   dataSource: MatTableDataSource<Artigo>;
-  displayedColumns = ['Ordem', 'Idioma', 'TituloOriginal', 'TituloIngles', 'QuantidadePaginas'];
+  displayedColumns = ['Artigo', 'Ordem', 'Idioma', 'TituloOriginal', 'TituloIngles', 'QuantidadePaginas', 'Delete'];
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private volumeService: VolumeService,
@@ -37,6 +37,12 @@ export class VolumeComponent implements OnInit {
   ngOnInit(): void {
     this.loadVolume();
     this.loadArtigos();
+  }
+  
+  deletarArtigo(artigo: Artigo) {
+    this.artigoService.deleteArtigo(this.volume.id, artigo).subscribe(response => {
+      this.loadArtigos();
+    });
   }
 
   private loadVolume() {

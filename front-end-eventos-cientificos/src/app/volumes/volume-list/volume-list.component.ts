@@ -28,7 +28,6 @@ export class VolumeListComponent implements OnInit {
   }
 
   deletarVolume(volume: Volume) {
-    
     this.volumeService.deleteVolume(volume).subscribe(response => {
       this.loadVolumes();
     });

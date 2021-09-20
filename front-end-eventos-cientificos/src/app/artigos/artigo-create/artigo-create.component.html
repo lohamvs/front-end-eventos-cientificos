@@ -1,0 +1,63 @@
+<div fxLayout="column" *ngIf="artigo">
+    <div class="title" fxLayout="row">
+        <div fxFlex="80" fxLayoutAlign="start center">
+            <span color="primary">Criar artigo</span>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="column" *ngIf="artigo">
+    <form #artigoEditForm="ngForm" (ngSubmit)="onSubmit(artigoEditForm)" novalidate>
+        <mat-card>
+            <mat-card-content fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                <div fxLayoutGap="20px" fxLayout="column" fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Ordem</mat-label>
+                        <input matInput [(ngModel)]="artigo.ordem" name="ordem" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Idioma</mat-label>
+                        <mat-select [(ngModel)]="artigo.idioma" name="idioma" >
+                            <mat-option *ngFor="let idioma of idiomas" [value]="idioma.title" required>
+                              {{idioma.value}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Título original</mat-label>
+                        <input matInput [(ngModel)]="artigo.tituloOriginal" name="tituloOriginal" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Palavras-chave originais</mat-label>
+                        <input matInput [(ngModel)]="artigo.palavrasChaveOriginais" name="palavrasChaveOriginais" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Resumo Original</mat-label>
+                        <textarea matInput [(ngModel)]="artigo.resumoOriginal" name="resumoOriginal" required></textarea>
+                    </mat-form-field>
+                </div>
+                <div fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Quantidade de páginas</mat-label>
+                        <input matInput [(ngModel)]="artigo.quantidadePaginas" name="quantidadePaginas" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Título em inglês</mat-label>
+                        <input matInput [(ngModel)]="artigo.tituloIngles" name="tituloIngles" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Palavras-chave em inglês</mat-label>
+                        <input matInput [(ngModel)]="artigo.palavrasChaveIngles" name="palavrasChaveIngles" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Resumo em inglês</mat-label>
+                        <textarea matInput [(ngModel)]="artigo.resumoIngles" name="resumoIngles" required></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary">Salvar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

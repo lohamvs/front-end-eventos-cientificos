@@ -1,0 +1,127 @@
+<div fxLayout="column" *ngIf="artigo">
+    <div class="title" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="80">
+            <span color="primary">Artigo #{{artigo.id}}</span>
+        </div>
+        <div fxFlex="20" fxLayoutAlign="end start">
+            <button mat-raised-button [routerLink]="[ 'edit' ]" color="primary">Criar autor</button>
+        </div>
+    </div>
+
+    <mat-card>
+        <mat-card-header fxLayout="row">
+            <div mat-card-avatar [routerLink]="[ 'edit' ]" class="pointer" fxLayoutAlign="center start">
+                <mat-icon>edit</mat-icon>
+            </div>
+            <mat-card-title>Detalhes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row" fxLayoutGap="20px">
+                <div fxFlex="50">
+                    <p><span><b>Ordem:</b> {{artigo.ordem}}</span></p>
+                    <p><span><b>Idioma:</b> {{artigo.idioma}}</span></p>
+                    <p><span><b>Título original:</b> {{artigo.tituloOriginal}}</span></p>
+                    <p><span><b>Título em inglês:</b> {{artigo.tituloIngles}}</span></p>
+                    <p><span><b>Quantidade de páginas:</b> {{artigo.quantidadePaginas}}</span></p>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div fxFlex="50" fxLayoutGap="20px" fxLayout="column">
+                    <div fxFlex fxLayoutGap="20px" fxLayout="column">
+                        <div fxFlex>
+                            <p><span><b>Palavras-chave:</b></span></p>
+                            <span>{{artigo.palavrasChaveOriginais}}</span>
+                        </div>
+                        <div fxFlex>
+                            <p><span><b>Resumo:</b></span></p>
+                            <span>{{artigo.resumoOriginal}}</span>
+                        </div>
+                    </div>
+                    <div fxFlex fxLayoutGap="20px" fxLayout="column">
+                        <div fxFlex>
+                            <p><span><b>Palavras-chave em inglês:</b></span></p>
+                            <span>{{artigo.palavrasChaveIngles}}</span>
+                        </div>
+                        <div fxFlex>
+                            <p><span><b>Resumo em inglês:</b></span></p>
+                            <span>{{artigo.resumoIngles}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <br>
+
+    <table mat-table [dataSource]="dataSource" matSort matSortActive="Ordem" matSortDirection="asc"
+        class="mat-elevation-z8" fxFlex fxFlexFill *ngIf="hasData">
+
+        <ng-container matColumnDef="Autor">
+            <th mat-header-cell *matHeaderCellDef>Ver detalhes</th>
+            <td mat-cell *matCellDef="let autor" [routerLink]="[ './autores' , autor.id ]" class="pointer" matRipple>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Ordem">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ordem </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.ordem}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="primeiroNome">
+            <th mat-header-cell *matHeaderCellDef> Primeiro nome </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.primeiroNome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeDoMeio">
+            <th mat-header-cell *matHeaderCellDef> Nome do meio </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.nomeDoMeio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sobrenome">
+            <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.sobrenome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="afiliacao">
+            <th mat-header-cell *matHeaderCellDef> Afiliação </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.afiliacao}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="afiliacaoIngles">
+            <th mat-header-cell *matHeaderCellDef> Afiliação em Inglês </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.afiliacaoIngles}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nacao">
+            <th mat-header-cell *matHeaderCellDef> País </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.nacao}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="orcId">
+            <th mat-header-cell *matHeaderCellDef> OrcId </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.orcId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Delete">
+            <th mat-header-cell *matHeaderCellDef> Deletar </th>
+            <td mat-cell *matCellDef="let autor" (click)="deletarAutor(autor)" class="pointer" matRipple>
+                <mat-icon class="red">delete</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
+    </table>
+
+    <div *ngIf="!hasData" fxLayoutAlign="center start">
+        <mat-card>
+            <h1>Nenhum autor.</h1>
+        </mat-card>
+    </div>
+</div>

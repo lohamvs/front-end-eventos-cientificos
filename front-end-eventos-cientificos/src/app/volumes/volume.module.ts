@@ -22,8 +22,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    VolumeRoutingModule,
-    FormsModule
+    FormsModule,
+    VolumeRoutingModule
   ],
   exports: [
     VolumeListComponent,

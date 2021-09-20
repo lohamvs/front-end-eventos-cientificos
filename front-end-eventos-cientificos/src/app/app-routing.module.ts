@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./volumes/volume.module').then(m => m.VolumeModule)
   },
   {
-    path: 'artigos',
+    path: 'volumes/:volumeId/artigos',
     loadChildren: () => import('./artigos/artigo.module').then(m => m.ArtigoModule)
   },
   {

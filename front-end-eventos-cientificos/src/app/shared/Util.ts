@@ -8,4 +8,9 @@ export class Util {
     static dateNowAsString() {
         return moment().format('DD/MM/YYYY').toString();
     }
+
+    static enumSelector(definition: any) {
+        return Object.keys(definition)
+            .map(key => ({ value: definition[key], title: key }));
+    }
 }
