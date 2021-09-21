@@ -1,0 +1,59 @@
+<div fxLayout="column" *ngIf="autor">
+    <div class="title" fxLayout="row">
+        <div fxFlex="80" fxLayoutAlign="start center">
+            <span color="primary">Editar Autor #{{ autor.id }}</span>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="column" *ngIf="autor">
+    <form #autorEditForm="ngForm" (ngSubmit)="onSubmit(autorEditForm)" novalidate>
+        <mat-card>
+            <mat-card-content fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                <div fxLayoutGap="20px" fxLayout="column" fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Ordem</mat-label>
+                        <input matInput [(ngModel)]="autor.ordem" name="ordem" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Primeiro Nome</mat-label>
+                        <input matInput [(ngModel)]="autor.primeiroNome" name="primeiroNome" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Sobrenome</mat-label>
+                        <input matInput [(ngModel)]="autor.sobrenome" name="sobrenome" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Nome do meio</mat-label>
+                        <input matInput [(ngModel)]="autor.nomeDoMeio" name="nomeDoMeio" required>
+                    </mat-form-field>
+                </div>
+                <div fxFlex>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Afiliação</mat-label>
+                        <input matInput [(ngModel)]="autor.afiliacao" name="afiliacao" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Afiliação em inglês</mat-label>
+                        <input matInput [(ngModel)]="autor.afiliacaoIngles" name="afiliacaoIngles" required>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>País</mat-label>
+                        <mat-select [(ngModel)]="autor.nacao" name="nacao" >
+                            <mat-option *ngFor="let pais of paises" [value]="pais.title" required>
+                              {{pais.value}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlexFill>
+                        <mat-label>Orc Id</mat-label>
+                        <input matInput [(ngModel)]="autor.orcId" name="orcId" required>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary">Salvar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

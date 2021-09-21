@@ -1,0 +1,62 @@
+<div fxFlex fxLayout="column">
+    <div class="title" fxLayout="row">
+        <div fxFlex="80" fxLayoutAlign="start center">
+            <span color="primary">Autores</span>
+        </div>
+    </div>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" fxFlex fxFlexFill>
+        <ng-container matColumnDef="Autor">
+            <th mat-header-cell *matHeaderCellDef>Ver detalhes</th>
+            <td mat-cell *matCellDef="let autor" [routerLink]="[ autor.id ]" class="pointer" matRipple><mat-icon>keyboard_arrow_right</mat-icon></td>
+        </ng-container>
+
+        <ng-container matColumnDef="ordem">
+            <th mat-header-cell *matHeaderCellDef> Ordem </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.ordem}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="primeiroNome">
+            <th mat-header-cell *matHeaderCellDef> Primeiro Nome </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.primeiroNome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeDoMeio">
+            <th mat-header-cell *matHeaderCellDef> Nome do meio </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.nomeDoMeio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sobrenome">
+            <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.sobrenome}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="afiliacao">
+            <th mat-header-cell *matHeaderCellDef> Afiliação </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.afiliacao}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="afiliacaoIngles">
+            <th mat-header-cell *matHeaderCellDef> Afiliação em inglês </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.afiliacaoIngles}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="NomeDoMeio">
+            <th mat-header-cell *matHeaderCellDef> Nome do meio </th>
+            <td mat-cell *matCellDef="let autor"> {{autor.nomeDoMeio}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Delete">
+            <th mat-header-cell *matHeaderCellDef> Deletar </th>
+            <td mat-cell *matCellDef="let autor" (click)="deletarAutor(autor)" class="pointer" matRipple><mat-icon class="red">delete</mat-icon></td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

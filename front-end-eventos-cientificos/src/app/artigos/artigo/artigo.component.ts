@@ -23,7 +23,7 @@ export class ArtigoComponent implements OnInit {
   autores: Autor[] = [];
 
   dataSource: MatTableDataSource<Autor>;
-  displayedColumns = ['ordem', 'email', 'primeiroNome', 'nomeDoMeio', 'sobrenome', 'afiliacao', 'afiliacaoIngles', 'nacao', 'orcId', 'Delete'];
+  displayedColumns = ['Autor', 'ordem', 'email', 'primeiroNome', 'nomeDoMeio', 'sobrenome', 'afiliacao', 'afiliacaoIngles', 'nacao', 'orcId', 'Delete'];
   
   @ViewChild(MatSort) sort: MatSort;
 
@@ -44,6 +44,7 @@ export class ArtigoComponent implements OnInit {
   ngOnInit(): void {
     this.loadVolume();
     this.loadArtigo();
+    this.loadAutores();
   }
   
   deletarAutor(autor: Autor) {
@@ -66,7 +67,8 @@ export class ArtigoComponent implements OnInit {
   }
 
   private loadAutores() {
-    this.autorService.getAutores().subscribe(response => {
+    this.autorService.getAutores(this.volumeId).subscribe(response => {
+      console.log(response);
       this.autores = response;
       this.dataSource = new MatTableDataSource<Autor>(this.autores);
       this.dataSource.sort = this.sort;

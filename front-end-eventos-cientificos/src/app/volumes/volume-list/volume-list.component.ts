@@ -20,7 +20,7 @@ export class VolumeListComponent implements OnInit {
     private router: Router) { }
 
   get hasData() {
-    return this.dataSource != null;
+    return this.volumes.length > 0;
   }
 
   ngOnInit(): void {

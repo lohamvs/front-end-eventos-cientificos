@@ -1,0 +1,35 @@
+<div fxLayout="column" *ngIf="autor">
+    <div class="title" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="80" fxFlexAlign="center">
+            <span>Autor #{{autor.id}}</span>
+        </div>
+        <div fxFlex="20" fxLayoutAlign="end start">
+            <button mat-raised-button [routerLink]="[ '../../' ]">Voltar</button>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header fxLayout="row">
+            <div mat-card-avatar [routerLink]="[ 'edit' ]" class="pointer" fxLayoutAlign="center start">
+                <mat-icon>edit</mat-icon>
+            </div>
+            <mat-card-title>Detalhes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row" fxLayoutGap="20px">
+                <div fxFlex="50">
+                    <p><span><b>Ordem:</b> {{autor.ordem}}</span></p>
+                    <p><span><b>Email:</b> {{autor.email}}</span></p>
+                    <p><span><b>PrimeiroNome:</b> {{autor.primeiroNome}}</span></p>
+                    <p><span><b>NomeDoMeio:</b> {{autor.nomeDoMeio}}</span></p>
+                    <p><span><b>Sobrenome:</b> {{autor.sobrenome}}</span></p>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div fxFlex="50">
+                    <p><span><b>Afiliacao:</b> {{autor.afiliacao}}</span></p>
+                    <p><span><b>AfiliacaoIngles:</b> {{autor.afiliacaoIngles}}</span></p>
+                    <p><span><b>País:</b> {{autor.nacao}}</span></p>
+                    <p><span><b>Orc Id:</b> {{autor.orcId}}</span></p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>

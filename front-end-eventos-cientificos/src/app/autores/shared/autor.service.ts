@@ -12,8 +12,8 @@ export class AutorService {
 
   constructor(private rest: CommonRestService) { }
 
-  getAutores() {
-    const url = this.resource;
+  getAutores(volumeId: number) {
+    const url = this.resource.concat(`?volumeId=${volumeId}`);
     return this.rest.get<Array<Autor>>(url);
   }
 

@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./artigos/artigo.module').then(m => m.ArtigoModule)
   },
   {
-    path: 'autores',
+    path: 'volumes/:volumeId/artigos/:artigoId/autores',
     loadChildren: () => import('./autores/autor.module').then(m => m.AutorModule)
   }
 ];

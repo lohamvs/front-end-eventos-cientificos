@@ -3,8 +3,10 @@
         <div fxFlex="80">
             <span color="primary">Artigo #{{artigo.id}}</span>
         </div>
-        <div fxFlex="20" fxLayoutAlign="end start">
-            <button mat-raised-button [routerLink]="[ 'edit' ]" color="primary">Criar autor</button>
+        <div fxFlex="20" fxLayoutAlign="end start" fxLayoutGap="20px">
+            <button mat-raised-button [routerLink]="[ '../../' ]">Voltar</button>
+        
+            <button mat-raised-button [routerLink]="[ 'autores', 'create' ]" color="primary">Criar autor</button>
         </div>
     </div>
 
@@ -17,7 +19,7 @@
         </mat-card-header>
         <mat-card-content>
             <div fxLayout="row" fxLayoutGap="20px">
-                <div fxFlex="50">
+                <div fxFlex="50" fxLayoutGap="20px" fxLayout="column">
                     <p><span><b>Ordem:</b> {{artigo.ordem}}</span></p>
                     <p><span><b>Idioma:</b> {{artigo.idioma}}</span></p>
                     <p><span><b>Título original:</b> {{artigo.tituloOriginal}}</span></p>
@@ -52,6 +54,12 @@
     </mat-card>
 
     <br>
+    
+    <div class="title" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="80">
+            <span>Autores</span>
+        </div>
+    </div>
 
     <table mat-table [dataSource]="dataSource" matSort matSortActive="Ordem" matSortDirection="asc"
         class="mat-elevation-z8" fxFlex fxFlexFill *ngIf="hasData">
@@ -63,7 +71,7 @@
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="Ordem">
+        <ng-container matColumnDef="ordem">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Ordem </th>
             <td mat-cell *matCellDef="let autor"> {{autor.ordem}} </td>
         </ng-container>
@@ -116,7 +124,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
     <div *ngIf="!hasData" fxLayoutAlign="center start">

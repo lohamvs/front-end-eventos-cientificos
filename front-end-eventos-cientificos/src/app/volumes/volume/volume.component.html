@@ -3,7 +3,9 @@
         <div fxFlex="80" fxFlexAlign="center">
             <span>Volume #{{volume.id}}</span>
         </div>
-        <div fxFlex="20" fxLayoutAlign="end start">
+        <div fxFlex="20" fxLayoutAlign="end start" fxLayoutGap="20px">
+            <button mat-raised-button [routerLink]="[ '../' ]">Voltar</button>
+        
             <button mat-raised-button [routerLink]="[ './artigos/create' ]" color="primary">Criar artigo</button>
         </div>
     </div>

@@ -18,7 +18,6 @@ export class VolumeCreateComponent {
       private router: Router) { }
   
   onSubmit(form: NgForm) {
-    console.log(form);
     if (form.valid) {
       this.volume.dataInicio = Util.dateNowAsString();
       this.createVolume();

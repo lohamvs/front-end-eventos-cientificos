@@ -1,3 +1,5 @@
+import { Artigo } from "src/app/artigos/shared/artigo";
+
 export class Autor {
     id: number;
     ordem: number;
@@ -9,4 +11,9 @@ export class Autor {
     afiliacaoIngles: string;
     nacao: string;
     orcId: string;
+    artigo: Artigo;
+
+    get nomeCompleto() {
+        return this.primeiroNome + ' ' + this.sobrenome + ' ' + this.nomeDoMeio;
+    }
 }
